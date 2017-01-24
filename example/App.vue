@@ -1,0 +1,35 @@
+<template>
+  <div id="app">
+    <a class="github-fork-ribbon" href="https://github.com/thiago-Malaca/vue-card" title="Fork me on GitHub">Fork me on GitHub</a>
+    <div class="header-container">
+      <div class="header-bg" :style="{'background-color': bgc}"></div>
+      <header class="header">
+        <div class="intro-wrap">
+          <div class="intro">
+            <h1>vue-card</h1>
+            <p>This is an Vue.js wrapper for the amazing <a href="https://github.com/jessepollak/card">Card</a> project.</p>
+          </div>  
+        </div> 
+
+        <div>
+          <card></card>
+        </div>
+
+    </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import card from '../src/components/Card.vue'
+
+export default {
+  name: 'Card',
+  components: {
+    card
+  }
+}
+</script>
+
+<style lang="stylus">
+</style>
