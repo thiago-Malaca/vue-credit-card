@@ -15,6 +15,11 @@
           <card v-model="cardDetail"></card>
         </div>
 
+        <input placeholder="Card number" type="tel" v-model="cardDetail.number">
+        <input placeholder="Full name" type="text" v-model="cardDetail.name">
+        <input placeholder="MM/YY" type="tel" v-model="cardDetail.expiry">
+        <input placeholder="CVC" type="number" v-model="cardDetail.cvc">
+
     </div>
     </div>
   </div>
