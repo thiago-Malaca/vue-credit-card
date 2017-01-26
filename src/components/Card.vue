@@ -1,7 +1,7 @@
 <template>
 
   <div class="jp-card-container">
-    <div class="jp-card">
+    <div class="jp-card" :class="classCard">
       <div class="jp-card-front">
         <div class="jp-card-logo jp-card-elo">
         <div class="e">e</div>
@@ -50,6 +50,22 @@ let options = {
 export default {
   name: 'Card',
   props: ['value'],
+  data () {
+    return {
+      isSafari: false,
+      isIE10: false,
+      isIE11: false
+    }
+  },
+  computed: {
+    classCard: function () {
+      return {
+        'jp-card-safari': this.isSafari,
+        'jp-card-ie-10': this.isIE10,
+        'jp-card-ie-11': this.isIE11
+      }
+    }
+  },
   created () {
     if (options.formatting) {
       if (!Payment.fns.validateCardCVC(this.value.cvc)) console.error('CVC number isn\'t valid:', this.value.cvc)
@@ -63,7 +79,25 @@ export default {
     //   let baseWidth = parseInt($cardContainer.clientWidth || window.getComputedStyle($cardContainer).width)
     //   $cardContainer.style.transform = `scale(${this.options.width / baseWidth})`
     // }
+
+    // safari can't handle transparent radial gradient right now
+    if (__guard__(navigator, x => x.userAgent)) {
+      let ua = navigator.userAgent.toLowerCase()
+      if ((ua.indexOf('safari') !== -1) && (ua.indexOf('chrome') === -1)) {
+        this.isSafari = true
+      }
+    }
+    if (/MSIE 10\./i.test(navigator.userAgent)) {
+      this.isIE10 = true
+    }
+    // ie 11 does not support conditional compilation, use user agent instead
+    if (/rv:11.0/i.test(navigator.userAgent)) {
+      this.isIE11 = true
+    }
   }
+}
+function __guard__ (value, transform) {
+  return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined
 }
 </script>
 

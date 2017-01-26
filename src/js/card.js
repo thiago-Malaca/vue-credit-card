@@ -236,20 +236,20 @@ class Card {
     //   // $cardContainer.style.transform = `scale(${this.options.width / baseWidth})`
     // }
 
-    // safari can't handle transparent radial gradient right now
-    if (__guard__(navigator, x => x.userAgent)) {
-      let ua = navigator.userAgent.toLowerCase()
-      if ((ua.indexOf('safari') !== -1) && (ua.indexOf('chrome') === -1)) {
-        // QJ.addClass(this.$card, 'jp-card-safari')
-      }
-    }
-    if (/MSIE 10\./i.test(navigator.userAgent)) {
-    //   QJ.addClass(this.$card, 'jp-card-ie-10')
-    }
-    // ie 11 does not support conditional compilation, use user agent instead
-    if (/rv:11.0/i.test(navigator.userAgent)) {
-    //   return QJ.addClass(this.$card, 'jp-card-ie-11')
-    }
+    // // safari can't handle transparent radial gradient right now
+    // if (__guard__(navigator, x => x.userAgent)) {
+    //   let ua = navigator.userAgent.toLowerCase()
+    //   if ((ua.indexOf('safari') !== -1) && (ua.indexOf('chrome') === -1)) {
+    //     // QJ.addClass(this.$card, 'jp-card-safari')
+    //   }
+    // }
+    // if (/MSIE 10\./i.test(navigator.userAgent)) {
+    // //   QJ.addClass(this.$card, 'jp-card-ie-10')
+    // }
+    // // ie 11 does not support conditional compilation, use user agent instead
+    // if (/rv:11.0/i.test(navigator.userAgent)) {
+    // //   return QJ.addClass(this.$card, 'jp-card-ie-11')
+    // }
   }
 
   attachHandlers () {
@@ -362,6 +362,6 @@ Card.initClass()
 export default Card
 // global.Card = Card
 
-function __guard__ (value, transform) {
-  return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined
-}
+// function __guard__ (value, transform) {
+//   return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined
+// }
