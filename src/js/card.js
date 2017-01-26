@@ -191,66 +191,66 @@ class Card {
     // if (toInitialize.getAttribute(this.initializedDataAttr)) { return }
     // toInitialize.setAttribute(this.initializedDataAttr, true)
 
-    this.render()
+    // this.render()
     this.attachHandlers()
     this.handleInitialPlaceholders()
   }
 
-  render () {
-    let selector
-    console.log('Sem QJ', 'render')
-    // QJ.append(this.$container, this.template(
-    //   this.cardTemplate,
-    //   extend({}, this.options.messages, this.options.placeholders)
-    // ))
+  // render () {
+  //   let selector
+  //   console.log('Sem QJ', 'render')
+  //   // QJ.append(this.$container, this.template(
+  //   //   this.cardTemplate,
+  //   //   extend({}, this.options.messages, this.options.placeholders)
+  //   // ))
 
-    for (var name in this.options.cardSelectors) {
-      selector = this.options.cardSelectors[name]
-    //   this[`$${name}`] = QJ.find(this.$container, selector)
-    }
+  //   for (var name in this.options.cardSelectors) {
+  //     selector = this.options.cardSelectors[name]
+  //   //   this[`$${name}`] = QJ.find(this.$container, selector)
+  //   }
 
-    for (name in this.options.formSelectors) {
-      selector = this.options.formSelectors[name]
-      selector = this.options[name] ? this.options[name] : selector
+  //   for (name in this.options.formSelectors) {
+  //     selector = this.options.formSelectors[name]
+  //     selector = this.options[name] ? this.options[name] : selector
 
-      console.log('Sem QJ', 'this.$el, selector')
-      // Tem que apagar
-      let obj = []
-    //   let obj = QJ.find(this.$el, selector)
+  //     console.log('Sem QJ', 'this.$el, selector')
+  //     // Tem que apagar
+  //     let obj = []
+  //   //   let obj = QJ.find(this.$el, selector)
 
-      if (!obj.length && this.options.debug) { console.error(`Card can't find a ${name} in your form.`) }
-      // this[`$${name}`] = obj
-    }
+  //     if (!obj.length && this.options.debug) { console.error(`Card can't find a ${name} in your form.`) }
+  //     // this[`$${name}`] = obj
+  //   }
 
-    // if (this.options.formatting) {
-    //   Payment.formatCardNumber(this.$numberInput)
-    //   Payment.formatCardCVC(this.$cvcInput)
-    //   Payment.formatCardExpiry(this.$expiryInput)
-    // }
+  //   // if (this.options.formatting) {
+  //   //   Payment.formatCardNumber(this.$numberInput)
+  //   //   Payment.formatCardCVC(this.$cvcInput)
+  //   //   Payment.formatCardExpiry(this.$expiryInput)
+  //   // }
 
-    // if (this.options.width) {
-    // //   let $cardContainer = QJ(this.options.cardSelectors.cardContainer)[0]
-    //   console.log('Sem QJ', '$cardContainer')
-    //   // let baseWidth = parseInt($cardContainer.clientWidth || window.getComputedStyle($cardContainer).width)
+  //   // if (this.options.width) {
+  //   // //   let $cardContainer = QJ(this.options.cardSelectors.cardContainer)[0]
+  //   //   console.log('Sem QJ', '$cardContainer')
+  //   //   // let baseWidth = parseInt($cardContainer.clientWidth || window.getComputedStyle($cardContainer).width)
 
-    //   // $cardContainer.style.transform = `scale(${this.options.width / baseWidth})`
-    // }
+  //   //   // $cardContainer.style.transform = `scale(${this.options.width / baseWidth})`
+  //   // }
 
-    // // safari can't handle transparent radial gradient right now
-    // if (__guard__(navigator, x => x.userAgent)) {
-    //   let ua = navigator.userAgent.toLowerCase()
-    //   if ((ua.indexOf('safari') !== -1) && (ua.indexOf('chrome') === -1)) {
-    //     // QJ.addClass(this.$card, 'jp-card-safari')
-    //   }
-    // }
-    // if (/MSIE 10\./i.test(navigator.userAgent)) {
-    // //   QJ.addClass(this.$card, 'jp-card-ie-10')
-    // }
-    // // ie 11 does not support conditional compilation, use user agent instead
-    // if (/rv:11.0/i.test(navigator.userAgent)) {
-    // //   return QJ.addClass(this.$card, 'jp-card-ie-11')
-    // }
-  }
+  //   // // safari can't handle transparent radial gradient right now
+  //   // if (__guard__(navigator, x => x.userAgent)) {
+  //   //   let ua = navigator.userAgent.toLowerCase()
+  //   //   if ((ua.indexOf('safari') !== -1) && (ua.indexOf('chrome') === -1)) {
+  //   //     // QJ.addClass(this.$card, 'jp-card-safari')
+  //   //   }
+  //   // }
+  //   // if (/MSIE 10\./i.test(navigator.userAgent)) {
+  //   // //   QJ.addClass(this.$card, 'jp-card-ie-10')
+  //   // }
+  //   // // ie 11 does not support conditional compilation, use user agent instead
+  //   // if (/rv:11.0/i.test(navigator.userAgent)) {
+  //   // //   return QJ.addClass(this.$card, 'jp-card-ie-11')
+  //   // }
+  // }
 
   attachHandlers () {
     let numberInputFilters = [this.validToggler('cardNumber')]
