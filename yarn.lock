@@ -4234,6 +4234,12 @@ path-type@^1.0.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
+payment@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/payment/-/payment-2.1.4.tgz#bdddd0d6168ea38ddb314a48b52d72f304de3caa"
+  dependencies:
+    qj "~2.0.0"
+
 pbkdf2-compat@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/pbkdf2-compat/-/pbkdf2-compat-2.0.1.tgz#b6e0c8fa99494d94e0511575802a59a5c142f288"
@@ -4607,6 +4613,10 @@ q-io@1.13.2:
 q@1.4.1, q@^1.0.1, q@^1.1.2:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.4.1.tgz#55705bcd93c5f3673530c2c2cbc0c2b3addc286e"
+
+qj@~2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/qj/-/qj-2.0.0.tgz#054dd3b75ce018728d23a0605f030dfda0bd158a"
 
 qs@6.2.0:
   version "6.2.0"

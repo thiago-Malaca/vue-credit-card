@@ -33,8 +33,37 @@
 </template>
 
 <script>
+import Payment from '../../node_modules/payment/lib'
+// import Card from '../js/card'
+
+let options = {
+  formatting: false
+}
+
+// let teste = new Card({
+//   form: document.querySelector('form'),
+//   container: '.card-wrapper'
+// })
+
+// console.log('card', teste)
+
 export default {
-  name: 'Card'
+  name: 'Card',
+  props: ['value'],
+  created () {
+    if (options.formatting) {
+      if (!Payment.fns.validateCardCVC(this.value.cvc)) console.error('CVC number isn\'t valid:', this.value.cvc)
+      if (!Payment.fns.validateCardExpiry(this.value.expiry)) console.error('Expiration date isn\'t valid:', this.value.expiry)
+      if (!Payment.fns.validateCardNumber(this.value.number)) console.error('Card number isn\'t valid:', this.value.number)
+    }
+
+    // [TODO]Implement in the future width.
+    // if (options.width) {
+    //   let $cardContainer = QJ(this.options.cardSelectors.cardContainer)[0]
+    //   let baseWidth = parseInt($cardContainer.clientWidth || window.getComputedStyle($cardContainer).width)
+    //   $cardContainer.style.transform = `scale(${this.options.width / baseWidth})`
+    // }
+  }
 }
 </script>
 

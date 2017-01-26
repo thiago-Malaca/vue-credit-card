@@ -24,7 +24,8 @@
   },
   "author": "Thiago Malaquias <thiago.malaca@gmail.com>",
   "dependencies": {
-    "bourbon": "^4.2.7"
+    "bourbon": "^4.2.7",
+    "payment": "^2.1.4"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",

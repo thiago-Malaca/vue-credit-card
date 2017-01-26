@@ -11,8 +11,8 @@
           </div>  
         </div> 
 
-        <div>
-          <card></card>
+        <div class="card-wrapper">
+          <card v-model="cardDetail"></card>
         </div>
 
     </div>
@@ -23,10 +23,22 @@
 <script>
 import card from '../src/components/Card.vue'
 
+let defaultProps = {
+  number: '4532117080573700',
+  name: 'Comprador T Cielo',
+  expiry: '12/2018',
+  cvc: '123'
+}
+
 export default {
   name: 'Card',
   components: {
     card
+  },
+  data () {
+    return {
+      cardDetail: defaultProps
+    }
   }
 }
 </script>
