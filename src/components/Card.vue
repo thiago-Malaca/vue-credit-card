@@ -1,5 +1,8 @@
 <template>
 
+
+<div>
+  <p>Teste: {{classDisplay}}</p>
   <div class="jp-card-container">
     <div class="jp-card" :class="classCard">
       <div class="jp-card-front">
@@ -16,30 +19,55 @@
         <div class="jp-card-logo jp-card-dankort"><div class="dk"><div class="d"></div><div class="k"></div></div></div>
         <div class="jp-card-lower">
           <div class="jp-card-shiny"></div>
-          <div class="jp-card-cvc jp-card-display">{{ cvc }}</div>
-          <div class="jp-card-number jp-card-display">{{ number }}</div>
-          <div class="jp-card-name jp-card-display">{{ name }}</div>
-          <div class="jp-card-expiry jp-card-display" :data-before="monthYear" :data-after="validDate">{{ expiry }}</div>
+          <div class="jp-card-cvc jp-card-display" :class="classDisplay['cvc']">{{ display.cvc }}</div>
+          <div class="jp-card-number jp-card-display" :class="classDisplay['number']">{{ display.number }}</div>
+          <div class="jp-card-name jp-card-display" :class="classDisplay['name']">{{ display.name }}</div>
+          <div class="jp-card-expiry jp-card-display" :class="classDisplay['expiry']" :data-before="monthYear" :data-after="validDate">{{ display.expiry }}</div>
         </div>
       </div>
       <div class="jp-card-back">
         <div class="jp-card-bar"></div>
-        <div class="jp-card-cvc jp-card-display">{{ cvc }}</div>
+        <div class="jp-card-cvc jp-card-display" :class="classDisplay['cvc']">{{ display.cvc }}</div>
         <div class="jp-card-shiny"></div>
       </div>
     </div>
   </div>
+  <slot></slot>
+</div>
 
 </template>
 
 <script>
+import Vue from 'vue'
 import Payment from '../../node_modules/payment/lib'
 // import Card from '../js/card'
 
 let options = {
-  formatting: false
+  formatting: false,
+  placeholders: {
+    number: '•••• •••• •••• ••••',
+    cvc: '•••',
+    expiry: '••/••',
+    name: 'Full Name'
+  },
+  inputFocus: null
 }
 
+let classDisplay = {name: null}
+
+Vue.directive('card-focus', {
+  // When the bound element is inserted into the DOM...
+  inserted: function (el) {
+    const toggleFocusState = (type) => () => {
+      Vue.set(classDisplay, el.name, {
+        'jp-card-focused': type === 'focus'
+      })
+    }
+
+    el.onfocus = toggleFocusState('focus')
+    el.onblur = toggleFocusState('blur')
+  }
+})
 // let teste = new Card({
 //   form: document.querySelector('form'),
 //   container: '.card-wrapper'
@@ -54,7 +82,8 @@ export default {
     return {
       isSafari: false,
       isIE10: false,
-      isIE11: false
+      isIE11: false,
+      classDisplay
     }
   },
   computed: {
@@ -63,6 +92,20 @@ export default {
         'jp-card-safari': this.isSafari,
         'jp-card-ie-10': this.isIE10,
         'jp-card-ie-11': this.isIE11
+      }
+    },
+    display: function () {
+      let value = Object.assign({}, this.value)
+
+      Object.keys(value).forEach(key => !value[key] && delete value[key])
+
+      value = Object.assign({}, options.placeholders, value)
+
+      return {
+        number: value.number,
+        name: value.name,
+        expiry: value.expiry,
+        cvc: value.cvc
       }
     }
   },
@@ -94,6 +137,8 @@ export default {
     if (/rv:11.0/i.test(navigator.userAgent)) {
       this.isIE11 = true
     }
+  },
+  mounted () {
   }
 }
 function __guard__ (value, transform) {

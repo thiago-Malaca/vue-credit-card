@@ -15,10 +15,10 @@
           <card v-model="cardDetail"></card>
         </div>
 
-        <input placeholder="Card number" type="tel" v-model="cardDetail.number">
-        <input placeholder="Full name" type="text" v-model="cardDetail.name">
-        <input placeholder="MM/YY" type="tel" v-model="cardDetail.expiry">
-        <input placeholder="CVC" type="number" v-model="cardDetail.cvc">
+        <input name="number" placeholder="Card number" type="tel" v-model="cardDetail.number" v-card-focus>
+        <input name="name" placeholder="Full name" type="text" v-model="cardDetail.name" v-card-focus>
+        <input name="expiry" placeholder="MM/YY" type="tel" v-model="cardDetail.expiry" v-card-focus>
+        <input name="cvc" placeholder="CVC" type="number" v-model="cardDetail.cvc" v-card-focus>
 
     </div>
     </div>

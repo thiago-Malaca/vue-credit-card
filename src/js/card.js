@@ -75,12 +75,12 @@ class Card {
         validDate: 'valid\nthru',
         monthYear: 'month/year'
       },
-      placeholders: {
-        number: '&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;',
-        cvc: '&bull;&bull;&bull;',
-        expiry: '&bull;&bull;/&bull;&bull;',
-        name: 'Full Name'
-      },
+      // placeholders: {
+      //   number: '&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;',
+      //   cvc: '&bull;&bull;&bull;',
+      //   expiry: '&bull;&bull;/&bull;&bull;',
+      //   name: 'Full Name'
+      // },
       masks: {
         cardNumber: false
       },
