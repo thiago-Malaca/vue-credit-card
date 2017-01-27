@@ -2,7 +2,7 @@
 
 
 <div>
-  <p>Teste: {{classCard}}</p>
+  <p>Teste: {{toInvert}}</p>
   <div class="jp-card-container">
     <div class="jp-card" :class="classCard">
       <div class="jp-card-front">
@@ -63,11 +63,11 @@ let options = {
     cvc: '•••',
     expiry: '••/••',
     name: 'Full Name'
-  },
-  inputFocus: null
+  }
 }
 
-let classDisplay = {name: null}
+let classDisplay = {}
+let stateCard = {}
 
 Vue.directive('card-focus', {
   // When the bound element is inserted into the DOM...
@@ -76,6 +76,7 @@ Vue.directive('card-focus', {
       Vue.set(classDisplay, el.name, {
         'jp-card-focused': type === 'focus'
       })
+      Vue.set(stateCard, 'toInvert', type === 'focus' && el.name === 'cvc')
     }
 
     el.onfocus = toggleFocusState('focus')
@@ -101,6 +102,7 @@ export default {
       isSafari: false,
       isIE10: false,
       isIE11: false,
+      stateCard,
       classDisplay
     }
   },
@@ -109,7 +111,8 @@ export default {
       let obj = {
         'jp-card-safari': this.isSafari,
         'jp-card-ie-10': this.isIE10,
-        'jp-card-ie-11': this.isIE11
+        'jp-card-ie-11': this.isIE11,
+        'jp-card-flipped': this.stateCard.toInvert
       }
 
       let identified = Payment.fns.cardType(this.value.number)
