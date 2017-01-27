@@ -80,6 +80,10 @@ Vue.directive('card-focus', {
 
     el.onfocus = toggleFocusState('focus')
     el.onblur = toggleFocusState('blur')
+
+    if (el.name === 'number') Payment.formatCardNumber(el)
+    if (el.name === 'expiry') Payment.formatCardExpiry(el)
+    if (el.name === 'cvc') Payment.formatCardCVC(el)
   }
 })
 // let teste = new Card({
@@ -130,7 +134,7 @@ export default {
       return {
         number: value.number,
         name: value.name,
-        expiry: value.expiry,
+        expiry: value.expiry.replace(/(\s+)/g, ''),
         cvc: value.cvc
       }
     }
