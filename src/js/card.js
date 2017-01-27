@@ -2,15 +2,15 @@
 
 // import QJ from 'qj'
 // import payment from 'payment'
-import Payment from '../../node_modules/payment/lib'
+// import Payment from '../../node_modules/payment/lib'
 
 // import extend from 'node.extend'
 
-let bindVal
-console.log('Pode apagar', bindVal)
+// let bindVal
+// console.log('Pode apagar', bindVal)
 class Card {
   static initClass () {
-    this.prototype.initializedDataAttr = 'data-jp-card-initialized'
+    // this.prototype.initializedDataAttr = 'data-jp-card-initialized'
     // this.prototype.cardTemplate = '' +
     // '<div class="jp-card-container">' +
     //     '<div class="jp-card">' +
@@ -63,14 +63,14 @@ class Card {
       //   cvcInput: 'input[name="cvc"]',
       //   nameInput: 'input[name="name"]'
       // },
-      cardSelectors: {
-        cardContainer: '.jp-card-container',
-        card: '.jp-card',
-        numberDisplay: '.jp-card-number',
-        expiryDisplay: '.jp-card-expiry',
-        cvcDisplay: '.jp-card-cvc',
-        nameDisplay: '.jp-card-name'
-      },
+      // cardSelectors: {
+      //   cardContainer: '.jp-card-container',
+      //   card: '.jp-card',
+      //   numberDisplay: '.jp-card-number',
+      //   expiryDisplay: '.jp-card-expiry',
+      //   cvcDisplay: '.jp-card-cvc',
+      //   nameDisplay: '.jp-card-name'
+      // },
       messages: {
         validDate: 'valid\nthru',
         monthYear: 'month/year'
@@ -81,9 +81,9 @@ class Card {
       //   expiry: '&bull;&bull;/&bull;&bull;',
       //   name: 'Full Name'
       // },
-      masks: {
-        cardNumber: false
-      },
+      // masks: {
+      //   cardNumber: false
+      // },
       classes: {
         valid: 'jp-card-valid',
         invalid: 'jp-card-invalid'
@@ -91,81 +91,81 @@ class Card {
       debug: false
     }
 
-    this.prototype.handlers = {
-      setCardType ($el, e) {
-        let cardType = e.data
+    // this.prototype.handlers = {
+    //   // setCardType ($el, e) {
+    //   //   let cardType = e.data
 
-        console.log('Sem QJ', 'setCardType', cardType)
-        // if (!QJ.hasClass(this.$card, cardType)) {
-        //   QJ.removeClass(this.$card, 'jp-card-unknown')
-        //   QJ.removeClass(this.$card, this.cardTypes.join(' '))
-        //   QJ.addClass(this.$card, `jp-card-${cardType}`)
-        //   QJ.toggleClass(this.$card, 'jp-card-identified', (cardType !== 'unknown'))
-        //   return this.cardType = cardType
-        // }
-      },
-      flipCard () {
-        // return QJ.addClass(this.$card, 'jp-card-flipped')
-        console.log('Sem QJ', 'flipCard')
-      },
-      unflipCard () {
-        // return QJ.removeClass(this.$card, 'jp-card-flipped')
-        console.log('Sem QJ', 'unflipCard')
-      }
-    }
+    //   //   console.log('Sem QJ', 'setCardType', cardType)
+    //   //   // if (!QJ.hasClass(this.$card, cardType)) {
+    //   //   //   QJ.removeClass(this.$card, 'jp-card-unknown')
+    //   //   //   QJ.removeClass(this.$card, this.cardTypes.join(' '))
+    //   //   //   QJ.addClass(this.$card, `jp-card-${cardType}`)
+    //   //   //   QJ.toggleClass(this.$card, 'jp-card-identified', (cardType !== 'unknown'))
+    //   //   //   return this.cardType = cardType
+    //   //   // }
+    //   // },
+    //   // flipCard () {
+    //   //   // return QJ.addClass(this.$card, 'jp-card-flipped')
+    //   //   console.log('Sem QJ', 'flipCard')
+    //   // },
+    //   // unflipCard () {
+    //   //   // return QJ.removeClass(this.$card, 'jp-card-flipped')
+    //   //   console.log('Sem QJ', 'unflipCard')
+    //   // }
+    // }
 
-    bindVal = function (el, out, opts) {
-      if (opts == null) { opts = {} }
-      opts.fill = opts.fill || false
-      opts.filters = opts.filters || []
-      if (!(opts.filters instanceof Array)) { opts.filters = [opts.filters] }
+  //   bindVal = function (el, out, opts) {
+  //     // if (opts == null) { opts = {} }
+  //     // opts.fill = opts.fill || false
+  //     // opts.filters = opts.filters || []
+  //     // if (!(opts.filters instanceof Array)) { opts.filters = [opts.filters] }
 
-      opts.join = opts.join || ''
-      if (!(typeof (opts.join) === 'function')) {
-        let joiner = opts.join
-        opts.join = () => joiner
-      }
+  //     // opts.join = opts.join || ''
+  //     // if (!(typeof (opts.join) === 'function')) {
+  //     //   let joiner = opts.join
+  //     //   opts.join = () => joiner
+  //     // }
 
-      let outDefaults = (Array.from(out).map((o) => o.textContent))
+  //     // let outDefaults = (Array.from(out).map((o) => o.textContent))
 
-      console.log('Sem QJ', 'bindVal', outDefaults)
+  //     // console.log('Sem QJ', 'bindVal', outDefaults)
 
-    //   QJ.on(el, 'focus', () => QJ.addClass(out, 'jp-card-focused'))
+  //   //   QJ.on(el, 'focus', () => QJ.addClass(out, 'jp-card-focused'))
 
-    //   QJ.on(el, 'blur', () => QJ.removeClass(out, 'jp-card-focused'))
+  //   //   QJ.on(el, 'blur', () => QJ.removeClass(out, 'jp-card-focused'))
 
-    //   QJ.on(el, 'keyup change paste', function(e) {
-    //     let outVal
-    //     let val = (Array.from(el).map((elem) => QJ.val(elem)))
+  //   //   QJ.on(el, 'keyup change paste', function(e) {
+  //   //     let outVal
+  //   //     let val = (Array.from(el).map((elem) => QJ.val(elem)))
 
-    //     let join = opts.join(val)
+  //   //     let join = opts.join(val)
 
-    //     val = val.join(join)
-    //     if (val === join) { val = "" }
+  //   //     val = val.join(join)
+  //   //     if (val === join) { val = "" }
 
-    //     for (let filter of Array.from(opts.filters)) {
-    //       val = filter(val, el, out)
-    //     }
+  //   //     for (let filter of Array.from(opts.filters)) {
+  //   //       val = filter(val, el, out)
+  //   //     }
 
-    //     return Array.from(out).map((outEl, i) =>
-    //       (opts.fill ?
-    //         outVal = val + outDefaults[i].substring(val.length)
-    //       :
-    //         outVal = val || outDefaults[i],
+  //   //     return Array.from(out).map((outEl, i) =>
+  //   //       (opts.fill ?
+  //   //         outVal = val + outDefaults[i].substring(val.length)
+  //   //       :
+  //   //         outVal = val || outDefaults[i],
 
-    //       outEl.textContent = outVal))
-    //   })
-      return el
-    }
-  }
-  template (tpl, data) {
-    return tpl.replace(/\{\{(.*?)\}\}/g, (match, key, str) => data[key])
-  }
+  //   //       outEl.textContent = outVal))
+  //   //   })
+  //     return el
+  //   }
+  // }
+  // template (tpl, data) {
+  //   return tpl.replace(/\{\{(.*?)\}\}/g, (match, key, str) => data[key])
+  // }
 
   constructor (opts) {
-    this.maskCardNumber = this.maskCardNumber.bind(this)
-    // this.options = extend(true, this.defaults, opts)
-    this.options = Object.assign({}, this.defaults, opts)
+    // this.maskCardNumber = this.maskCardNumber.bind(this)
+    // // this.options = extend(true, this.defaults, opts)
+    // this.options = Object.assign({}, this.defaults, opts)
 
     // if (!this.options.form) {
     //   console.log('Please provide a form')
@@ -175,16 +175,16 @@ class Card {
     // console.log('Sem QJ', 'constructor')
     // this.$el = QJ(this.options.form)
 
-    if (!this.options.container) {
-      console.log('Please provide a container')
-      return
-    }
+    // if (!this.options.container) {
+    //   console.log('Please provide a container')
+    //   return
+    // }
 
     // this.$container = QJ(this.options.container)
 
     // set a data attribute to ensure that card is only ever initialized
     // once on a given container
-    console.log('Sem QJ', 'constructor.isDOMElement')
+    // console.log('Sem QJ', 'constructor.isDOMElement')
     // Tem que apagar
     // let toInitialize = this.$container
     // let toInitialize = QJ.isDOMElement(this.$container) ? this.$container : this.$container[0]
@@ -193,7 +193,7 @@ class Card {
 
     // this.render()
     this.attachHandlers()
-    this.handleInitialPlaceholders()
+    // this.handleInitialPlaceholders()
   }
 
   // render () {
@@ -263,7 +263,7 @@ class Card {
     )
     // QJ.on(this.$numberInput, 'payment.cardType', this.handle('setCardType'))
 
-    let expiryFilters = [val => val.replace(/(\s+)/g, '')]
+    // let expiryFilters = [val => val.replace(/(\s+)/g, '')]
     expiryFilters.push(this.validToggler('cardExpiry'))
 
     bindVal(this.$expiryInput, this.$expiryDisplay, {
@@ -305,13 +305,13 @@ class Card {
   //   })()
   // }
 
-  handle (fn) {
-    return function (e) {
-      let args = Array.prototype.slice.call(arguments)
-      args.unshift(e.target)
-      return this.handlers[fn].apply(this, args)
-    }.bind(this)
-  }
+  // handle (fn) {
+  //   return function (e) {
+  //     let args = Array.prototype.slice.call(arguments)
+  //     args.unshift(e.target)
+  //     return this.handlers[fn].apply(this, args)
+  //   }.bind(this)
+  // }
 
   validToggler (validatorName) {
     let isValid
@@ -335,31 +335,31 @@ class Card {
       return val
     }
   }
-  toggleValidClass (el, test) {
-    // QJ.toggleClass(el, this.options.classes.valid, test)
-    // return QJ.toggleClass(el, this.options.classes.invalid, !test)
-  }
+  // toggleValidClass (el, test) {
+  //   // QJ.toggleClass(el, this.options.classes.valid, test)
+  //   // return QJ.toggleClass(el, this.options.classes.invalid, !test)
+  // }
 
-  maskCardNumber (val, el, out) {
-    let mask = this.options.masks.cardNumber
-    let numbers = val.split(' ')
+//   maskCardNumber (val, el, out) {
+//     let mask = this.options.masks.cardNumber
+//     let numbers = val.split(' ')
 
-    if (numbers.length >= 3) {
-      numbers.forEach((item, idx) => {
-        if (idx !== (numbers.length - 1)) {
-          numbers[idx] = numbers[idx].replace(/\d/g, mask)
-          return numbers[idx]
-        }
-      })
-      return numbers.join(' ')
-    } else {
-      return val.replace(/\d/g, mask)
-    }
-  }
-}
-Card.initClass()
+//     if (numbers.length >= 3) {
+//       numbers.forEach((item, idx) => {
+//         if (idx !== (numbers.length - 1)) {
+//           numbers[idx] = numbers[idx].replace(/\d/g, mask)
+//           return numbers[idx]
+//         }
+//       })
+//       return numbers.join(' ')
+//     } else {
+//       return val.replace(/\d/g, mask)
+//     }
+//   }
+// }
+// Card.initClass()
 
-export default Card
+// export default Card
 // global.Card = Card
 
 // function __guard__ (value, transform) {
