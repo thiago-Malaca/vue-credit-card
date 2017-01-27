@@ -119,9 +119,12 @@ export default {
 
       obj['jp-card-identified'] = !!identified
 
+      let knownFlag = false
       options.cardTypes.forEach(type => {
-        if (identified === type) obj['jp-card-' + type] = true
+        if (identified === type) obj['jp-card-' + type] = knownFlag = true
       })
+
+      if (!knownFlag) obj['jp-card-unknown'] = true
 
       return obj
     },
