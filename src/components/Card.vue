@@ -1,46 +1,41 @@
 <template>
-
-
-<div>
-  <p>Teste: {{toInvert}}</p>
-  <div class="jp-card-container">
-    <div class="jp-card" :class="classCard">
-      <div class="jp-card-front">
-        <div class="jp-card-logo jp-card-elo">
-        <div class="e">e</div>
-        <div class="l">l</div>
-        <div class="o">o</div>
+  <div>
+    <div class="jp-card-container">
+      <div class="jp-card" :class="classCard">
+        <div class="jp-card-front">
+          <div class="jp-card-logo jp-card-elo">
+          <div class="e">e</div>
+          <div class="l">l</div>
+          <div class="o">o</div>
+          </div>
+          <div class="jp-card-logo jp-card-visa">visa</div>
+          <div class="jp-card-logo jp-card-mastercard">MasterCard</div>
+          <div class="jp-card-logo jp-card-maestro">Maestro</div>
+          <div class="jp-card-logo jp-card-amex"></div>
+          <div class="jp-card-logo jp-card-discover">discover</div>
+          <div class="jp-card-logo jp-card-dankort"><div class="dk"><div class="d"></div><div class="k"></div></div></div>
+          <div class="jp-card-lower">
+            <div class="jp-card-shiny"></div>
+            <div class="jp-card-cvc jp-card-display" :class="classDisplay['cvc']">{{ display.cvc }}</div>
+            <div class="jp-card-number jp-card-display" :class="classDisplay['number']">{{ display.number }}</div>
+            <div class="jp-card-name jp-card-display" :class="classDisplay['name']">{{ display.name }}</div>
+            <div class="jp-card-expiry jp-card-display" :class="classDisplay['expiry']" :data-before="options.monthYear" :data-after="options.validDate">{{ display.expiry }}</div>
+          </div>
         </div>
-        <div class="jp-card-logo jp-card-visa">visa</div>
-        <div class="jp-card-logo jp-card-mastercard">MasterCard</div>
-        <div class="jp-card-logo jp-card-maestro">Maestro</div>
-        <div class="jp-card-logo jp-card-amex"></div>
-        <div class="jp-card-logo jp-card-discover">discover</div>
-        <div class="jp-card-logo jp-card-dankort"><div class="dk"><div class="d"></div><div class="k"></div></div></div>
-        <div class="jp-card-lower">
-          <div class="jp-card-shiny"></div>
+        <div class="jp-card-back">
+          <div class="jp-card-bar"></div>
           <div class="jp-card-cvc jp-card-display" :class="classDisplay['cvc']">{{ display.cvc }}</div>
-          <div class="jp-card-number jp-card-display" :class="classDisplay['number']">{{ display.number }}</div>
-          <div class="jp-card-name jp-card-display" :class="classDisplay['name']">{{ display.name }}</div>
-          <div class="jp-card-expiry jp-card-display" :class="classDisplay['expiry']" :data-before="options.monthYear" :data-after="options.validDate">{{ display.expiry }}</div>
+          <div class="jp-card-shiny"></div>
         </div>
-      </div>
-      <div class="jp-card-back">
-        <div class="jp-card-bar"></div>
-        <div class="jp-card-cvc jp-card-display" :class="classDisplay['cvc']">{{ display.cvc }}</div>
-        <div class="jp-card-shiny"></div>
       </div>
     </div>
+    <slot></slot>
   </div>
-  <slot></slot>
-</div>
-
 </template>
 
 <script>
 import Vue from 'vue'
 import Payment from '../../node_modules/payment/lib'
-// import Card from '../js/card'
 
 let options = {
   formatting: false,
@@ -104,12 +99,6 @@ Vue.directive('card-focus', {
     if (el.name === 'cvc') Payment.formatCardCVC(el)
   }
 })
-// let teste = new Card({
-//   form: document.querySelector('form'),
-//   container: '.card-wrapper'
-// })
-
-// console.log('card', teste)
 
 const isValid = {
   number: val => Payment.fns.validateCardNumber(val),
