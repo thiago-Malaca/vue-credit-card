@@ -16,6 +16,10 @@
 @import "cards/dankort";
 @import "cards/elo";
 
+.jp-card-invalid {
+    color: red !important; 
+}
+
 .jp-card-container {
     @include perspective(1000px);
     width: $card-width;

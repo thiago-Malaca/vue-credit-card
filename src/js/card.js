@@ -71,10 +71,10 @@ class Card {
       //   cvcDisplay: '.jp-card-cvc',
       //   nameDisplay: '.jp-card-name'
       // },
-      messages: {
-        validDate: 'valid\nthru',
-        monthYear: 'month/year'
-      },
+      // messages: {
+        // validDate: 'valid\nthru',
+        // monthYear: 'month/year'
+      // },
       // placeholders: {
       //   number: '&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;',
       //   cvc: '&bull;&bull;&bull;',

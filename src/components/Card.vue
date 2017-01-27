@@ -22,7 +22,7 @@
           <div class="jp-card-cvc jp-card-display" :class="classDisplay['cvc']">{{ display.cvc }}</div>
           <div class="jp-card-number jp-card-display" :class="classDisplay['number']">{{ display.number }}</div>
           <div class="jp-card-name jp-card-display" :class="classDisplay['name']">{{ display.name }}</div>
-          <div class="jp-card-expiry jp-card-display" :class="classDisplay['expiry']" :data-before="monthYear" :data-after="validDate">{{ display.expiry }}</div>
+          <div class="jp-card-expiry jp-card-display" :class="classDisplay['expiry']" :data-before="options.monthYear" :data-after="options.validDate">{{ display.expiry }}</div>
         </div>
       </div>
       <div class="jp-card-back">
@@ -44,6 +44,8 @@ import Payment from '../../node_modules/payment/lib'
 
 let options = {
   formatting: false,
+  monthYear: 'month/year',
+  validDate: 'valid\nthru',
   cardTypes: [
     'amex',
     'dankort',
@@ -58,6 +60,12 @@ let options = {
     'visaelectron',
     'elo'
   ],
+  inputTypes: [
+    'number',
+    'name',
+    'expiry',
+    'cvc'
+  ],
   placeholders: {
     number: '•••• •••• •••• ••••',
     cvc: '•••',
@@ -67,16 +75,25 @@ let options = {
 }
 
 let classDisplay = {}
-let stateCard = {}
+options.inputTypes.forEach(type => {
+  classDisplay[type] = {
+    'jp-card-focused': false,
+    'jp-card-valid': false,
+    'jp-card-invalid': false
+  }
+})
+
+let stateCard = {
+  toInvert: false
+}
 
 Vue.directive('card-focus', {
   // When the bound element is inserted into the DOM...
   inserted: function (el) {
     const toggleFocusState = (type) => () => {
-      Vue.set(classDisplay, el.name, {
-        'jp-card-focused': type === 'focus'
-      })
-      Vue.set(stateCard, 'toInvert', type === 'focus' && el.name === 'cvc')
+      classDisplay[el.name]['jp-card-focused'] = type === 'focus'
+
+      stateCard.toInvert = type === 'focus' && el.name === 'cvc'
     }
 
     el.onfocus = toggleFocusState('focus')
@@ -94,6 +111,16 @@ Vue.directive('card-focus', {
 
 // console.log('card', teste)
 
+const isValid = {
+  number: val => Payment.fns.validateCardNumber(val),
+  name: val => val !== '',
+  expiry: val => {
+    let objVal = Payment.fns.cardExpiryVal(val)
+    return Payment.fns.validateCardExpiry(objVal.month, objVal.year)
+  },
+  cvc: (val, cardType) => Payment.fns.validateCardCVC(val, cardType)
+}
+
 export default {
   name: 'Card',
   props: ['value'],
@@ -102,6 +129,8 @@ export default {
       isSafari: false,
       isIE10: false,
       isIE11: false,
+      cardType: null,
+      options,
       stateCard,
       classDisplay
     }
@@ -115,13 +144,13 @@ export default {
         'jp-card-flipped': this.stateCard.toInvert
       }
 
-      let identified = Payment.fns.cardType(this.value.number)
+      this.cardType = Payment.fns.cardType(this.value.number)
 
-      obj['jp-card-identified'] = !!identified
+      obj['jp-card-identified'] = !!this.cardType
 
       let knownFlag = false
       options.cardTypes.forEach(type => {
-        if (identified === type) obj['jp-card-' + type] = knownFlag = true
+        if (this.cardType === type) obj['jp-card-' + type] = knownFlag = true
       })
 
       if (!knownFlag) obj['jp-card-unknown'] = true
@@ -130,6 +159,12 @@ export default {
     },
     display: function () {
       this.value.number = Payment.fns.formatCardNumber(this.value.number)
+
+      options.inputTypes.forEach(type => {
+        let valided = isValid[type](this.value[type], this.cardType)
+        classDisplay[type]['jp-card-valid'] = valided
+        classDisplay[type]['jp-card-invalid'] = !valided
+      })
 
       let value = Object.assign({}, this.value)
 
