@@ -119,6 +119,8 @@ export default {
       return obj
     },
     display: function () {
+      this.value.number = Payment.fns.formatCardNumber(this.value.number)
+
       let value = Object.assign({}, this.value)
 
       Object.keys(value).forEach(key => !value[key] && delete value[key])

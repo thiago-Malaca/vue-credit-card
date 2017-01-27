@@ -41,28 +41,28 @@ class Card {
     //         '</div>' +
     //     '</div>' +
     // '</div>'
-    this.prototype.cardTypes = [
-      'jp-card-amex',
-      'jp-card-dankort',
-      'jp-card-dinersclub',
-      'jp-card-discover',
-      'jp-card-jcb',
-      'jp-card-laser',
-      'jp-card-maestro',
-      'jp-card-mastercard',
-      'jp-card-unionpay',
-      'jp-card-visa',
-      'jp-card-visaelectron',
-      'jp-card-elo'
-    ]
+    // this.prototype.cardTypes = [
+    //   'jp-card-amex',
+    //   'jp-card-dankort',
+    //   'jp-card-dinersclub',
+    //   'jp-card-discover',
+    //   'jp-card-jcb',
+    //   'jp-card-laser',
+    //   'jp-card-maestro',
+    //   'jp-card-mastercard',
+    //   'jp-card-unionpay',
+    //   'jp-card-visa',
+    //   'jp-card-visaelectron',
+    //   'jp-card-elo'
+    // ]
     this.prototype.defaults = {
       // formatting: false,
-      formSelectors: {
-        numberInput: 'input[name="number"]',
-        expiryInput: 'input[name="expiry"]',
-        cvcInput: 'input[name="cvc"]',
-        nameInput: 'input[name="name"]'
-      },
+      // formSelectors: {
+      //   numberInput: 'input[name="number"]',
+      //   expiryInput: 'input[name="expiry"]',
+      //   cvcInput: 'input[name="cvc"]',
+      //   nameInput: 'input[name="name"]'
+      // },
       cardSelectors: {
         cardContainer: '.jp-card-container',
         card: '.jp-card',
@@ -284,26 +284,26 @@ class Card {
     })
   }
 
-  handleInitialPlaceholders () {
-    return (() => {
-      let result = []
-      for (let name in this.options.formSelectors) {
-        let selector = this.options.formSelectors[name]
-        let item
-        var el = this[`$${name}`]
-        console.log('Sem QJ', 'el', el, selector)
-        // if (QJ.val(el)) {
-        //   // if the input has a value, we want to trigger a refresh
-        //   QJ.trigger(el, 'paste')
-        //   // set a timeout because `jquery.payment` does the reset of the val
-        //   // in a timeout
-        //   item = setTimeout(() => QJ.trigger(el, 'keyup'))
-        // }
-        result.push(item)
-      }
-      return result
-    })()
-  }
+  // handleInitialPlaceholders () {
+  //   return (() => {
+  //     let result = []
+  //     for (let name in this.options.formSelectors) {
+  //       let selector = this.options.formSelectors[name]
+  //       let item
+  //       var el = this[`$${name}`]
+  //       console.log('Sem QJ', 'el', el, selector)
+  //       // if (QJ.val(el)) {
+  //       //   // if the input has a value, we want to trigger a refresh
+  //       //   QJ.trigger(el, 'paste')
+  //       //   // set a timeout because `jquery.payment` does the reset of the val
+  //       //   // in a timeout
+  //       //   item = setTimeout(() => QJ.trigger(el, 'keyup'))
+  //       // }
+  //       result.push(item)
+  //     }
+  //     return result
+  //   })()
+  // }
 
   handle (fn) {
     return function (e) {
