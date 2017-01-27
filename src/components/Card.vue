@@ -2,7 +2,7 @@
 
 
 <div>
-  <p>Teste: {{classDisplay}}</p>
+  <p>Teste: {{classCard}}</p>
   <div class="jp-card-container">
     <div class="jp-card" :class="classCard">
       <div class="jp-card-front">
@@ -44,6 +44,20 @@ import Payment from '../../node_modules/payment/lib'
 
 let options = {
   formatting: false,
+  cardTypes: [
+    'amex',
+    'dankort',
+    'dinersclub',
+    'discover',
+    'jcb',
+    'laser',
+    'maestro',
+    'mastercard',
+    'unionpay',
+    'visa',
+    'visaelectron',
+    'elo'
+  ],
   placeholders: {
     number: '•••• •••• •••• ••••',
     cvc: '•••',
@@ -88,11 +102,21 @@ export default {
   },
   computed: {
     classCard: function () {
-      return {
+      let obj = {
         'jp-card-safari': this.isSafari,
         'jp-card-ie-10': this.isIE10,
         'jp-card-ie-11': this.isIE11
       }
+
+      let identified = Payment.fns.cardType(this.value.number)
+
+      obj['jp-card-identified'] = !!identified
+
+      options.cardTypes.forEach(type => {
+        if (identified === type) obj['jp-card-' + type] = true
+      })
+
+      return obj
     },
     display: function () {
       let value = Object.assign({}, this.value)
