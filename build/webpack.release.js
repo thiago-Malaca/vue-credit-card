@@ -3,8 +3,6 @@ var path = require('path')
 var webpack = require("webpack")
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
 var projectRoot = path.resolve(__dirname, '../')
-var cssLoader = ExtractTextPlugin.extract('style-loader', 'css-loader')
-var utils = require('./utils')
 
 module.exports = {
   entry: {
@@ -44,7 +42,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: cssLoader
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
       },
       {
         test: /\.styl$/,
@@ -56,7 +54,9 @@ module.exports = {
     formatter: require('eslint-friendly-formatter')
   },
   vue: {
-    loaders: utils.cssLoaders()
+    loaders: {
+      scss: 'vue-style!css!sass'
+    }
   },
   babel: {
     presets: ['es2015'],

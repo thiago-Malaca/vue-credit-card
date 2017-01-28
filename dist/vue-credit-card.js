@@ -63,7 +63,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var VueCard = {
-	  version: '0.0.1',
+	  version: '0.0.3',
 	  Card: _Card2.default
 	};
 
