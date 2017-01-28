@@ -1,7 +1,7 @@
 {
   "name": "vue-credit-card",
   "version": "0.0.1",
-  "description": "Vue.js wrapper for card https://github.com/jessepollak/card",
+  "description": "Vue.js wrapper for credit card https://github.com/jessepollak/card",
   "keywords": [
     "card",
     "credit",
@@ -99,5 +99,9 @@
     "node": ">= 4.0.0",
     "npm": ">= 3.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thiago-Malaca/vue-credit-card/issues"
+  },
+  "homepage": "https://github.com/thiago-Malaca/vue-credit-card#readme"
 }
