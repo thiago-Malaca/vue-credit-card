@@ -4,6 +4,7 @@ var webpack = require("webpack")
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
 var projectRoot = path.resolve(__dirname, '../')
 var cssLoader = ExtractTextPlugin.extract('style-loader', 'css-loader')
+var utils = require('./utils')
 
 module.exports = {
   entry: {
@@ -53,6 +54,9 @@ module.exports = {
   },
   eslint: {
     formatter: require('eslint-friendly-formatter')
+  },
+  vue: {
+    loaders: utils.cssLoaders()
   },
   babel: {
     presets: ['es2015'],
