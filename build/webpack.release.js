@@ -7,7 +7,7 @@ var cssLoader = ExtractTextPlugin.extract('style-loader', 'css-loader')
 
 module.exports = {
   entry: {
-    'vue-card': './src/index.js'
+    'vue-credit-card': './src/index.js'
   },
   output: {
     filename: './dist/[name].js',
