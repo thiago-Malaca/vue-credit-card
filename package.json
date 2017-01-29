@@ -1,6 +1,6 @@
 {
   "name": "vue-credit-card",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Vue.js wrapper for credit card https://github.com/jessepollak/card",
   "keywords": [
     "card",
@@ -8,7 +8,7 @@
     "vuejs",
     "vue"
   ],
-  "main": "dist/vue-credit-card.min.js",
+  "main": "src/components/Card.vue",
   "scripts": {
     "example": "node build/build.js",
     "dev": "node build/dev-server.js",
@@ -25,6 +25,7 @@
   },
   "author": "Thiago Malaquias <thiago.malaca@gmail.com>",
   "dependencies": {
+    "vue": "^2.1.0",
     "bourbon": "^4.2.7",
     "payment": "^2.1.4"
   },

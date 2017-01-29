@@ -206,7 +206,7 @@ function __guard__ (value, transform) {
 }
 </script>
 
-<style lang="scss">
-  @import "../scss/card"
+<style lang="sass">
+  @import "../scss/card";
 
 </style>

@@ -40,10 +40,14 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel'
       },
-      {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
-      },
+      // {
+      //   test: /\.css$/,
+      //   loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+      // },
+      // {
+      //     test: /\.(scss|sass)/,
+      //     loader: ExtractTextPlugin.extract('vue-style-loader','css!sass')
+      // },
       {
         test: /\.styl$/,
         loader: ExtractTextPlugin.extract('style-loader','css-loader!stylus-loader')
@@ -55,7 +59,17 @@ module.exports = {
   },
   vue: {
     loaders: {
-      scss: 'vue-style!css!sass'
+        // scss: 'vue-style!css!sass'
+        // sass: 'vue-style!css!sass'
+        // css: ExtractTextPlugin.extract('css'),
+        // sass: ExtractTextPlugin.extract('css!sass'),
+        // sass: ExtractTextPlugin.extract('vue-style-loader', 'sass-loader'),
+        // scss: ExtractTextPlugin.extract('vue-style-loader', 'sass-loader')
+        // scss: ExtractTextPlugin.extract('stylus-loader', 'css-loader!sass-loader')
+        // scss: ExtractTextPlugin.extract('style', 'css?sourceMap&localIdentName=[local]___[hash:base64:5]!resolve-url!sass?outputStyle=expanded')
+        // scss: ExtractTextPlugin.extract('style','css!sass')
+        // scss:extractCSS.extract(['css','sass']),
+        // css:extractCSS.extract("style-loader", "css-loader")
     }
   },
   babel: {
