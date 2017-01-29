@@ -35,7 +35,7 @@
 
 <script>
 import Vue from 'vue'
-import Payment from '../../node_modules/payment/lib'
+import Payment from 'payment/lib'
 
 let options = {
   formatting: false,
