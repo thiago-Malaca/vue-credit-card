@@ -94,8 +94,6 @@ Vue.directive('card-focus', {
     el.onfocus = toggleFocusState('focus')
     el.onblur = toggleFocusState('blur')
 
-    if (el.name === 'number') Payment.formatCardNumber(el)
-    if (el.name === 'expiry') Payment.formatCardExpiry(el)
     if (el.name === 'cvc') Payment.formatCardCVC(el)
   }
 })
@@ -108,6 +106,10 @@ const isValid = {
     return Payment.fns.validateCardExpiry(objVal.month, objVal.year)
   },
   cvc: (val, cardType) => Payment.fns.validateCardCVC(val, cardType)
+}
+
+const fns = {
+  formatCardExpiry: val => val.replace(/^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/mg, '$1/$2')
 }
 
 export default {
@@ -148,6 +150,7 @@ export default {
     },
     display: function () {
       this.value.number = Payment.fns.formatCardNumber(this.value.number)
+      this.value.expiry = fns.formatCardExpiry(this.value.expiry)
 
       options.inputTypes.forEach(type => {
         let valided = isValid[type](this.value[type], this.cardType)
