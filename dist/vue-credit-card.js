@@ -95,7 +95,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/home/malaca/projetos/vue/vue-credit-card.old/src/components/Card.vue"
+	__vue_options__.__file = "/home/malaca/projetos/vue/vue-credit-card/src/components/Card.vue"
 	if(typeof __vue_options__.name === "undefined") {
 	  __vue_options__.name = "Card"
 	}__vue_options__.render = __vue_template__.render
@@ -108,9 +108,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-c921d7f4", __vue_options__)
+	    hotAPI.createRecord("data-v-fa0a8a66", __vue_options__)
 	  } else {
-	    hotAPI.reload("data-v-c921d7f4", __vue_options__)
+	    hotAPI.reload("data-v-fa0a8a66", __vue_options__)
 	  }
 	})()}
 	if (__vue_options__.functional && typeof __vue_template__ !== "undefined") {console.error("[vue-loader] Card.vue: functional components are not supported with templates, they should use render functions.")}
@@ -134,8 +134,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-c921d7f4!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Card.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-c921d7f4!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Card.vue");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-fa0a8a66!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Card.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-fa0a8a66!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Card.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -504,8 +504,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    el.onfocus = toggleFocusState('focus');
 	    el.onblur = toggleFocusState('blur');
 
-	    if (el.name === 'number') _lib2.default.formatCardNumber(el);
-	    if (el.name === 'expiry') _lib2.default.formatCardExpiry(el);
 	    if (el.name === 'cvc') _lib2.default.formatCardCVC(el);
 	  }
 	});
@@ -523,6 +521,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  cvc: function cvc(val, cardType) {
 	    return _lib2.default.fns.validateCardCVC(val, cardType);
+	  }
+	};
+
+	var fns = {
+	  formatCardExpiry: function formatCardExpiry(val) {
+	    return val.replace(/^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/mg, '$1/$2');
 	  }
 	};
 
@@ -569,6 +573,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _this2 = this;
 
 	      this.value.number = _lib2.default.fns.formatCardNumber(this.value.number);
+	      this.value.expiry = fns.formatCardExpiry(this.value.expiry);
 
 	      options.inputTypes.forEach(function (type) {
 	        var valided = isValid[type](_this2.value[type], _this2.cardType);
@@ -8495,7 +8500,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-c921d7f4", module.exports)
+	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-fa0a8a66", module.exports)
 	  }
 	}
 
