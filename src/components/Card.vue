@@ -109,7 +109,7 @@ const isValid = {
 }
 
 const fns = {
-  formatCardExpiry: val => val.replace(/^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/mg, '$1/$2')
+  formatCardExpiry: val => val.replace(/^([0-9]{2})\/?([0-9]{2,4})$/mg, '$1 / $2')
 }
 
 export default {
