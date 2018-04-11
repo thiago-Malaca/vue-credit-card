@@ -114,7 +114,7 @@ const fns = {
 
 export default {
   name: 'Card',
-  props: ['value'],
+  props: ['value', 'placeholders'],
   data () {
     return {
       isSafari: false,
@@ -162,7 +162,8 @@ export default {
 
       Object.keys(value).forEach(key => !value[key] && delete value[key])
 
-      value = Object.assign({}, options.placeholders, value)
+      const objPlaceholders = Object.assign({}, options.placeholders, this.placeholders)
+      value = Object.assign({}, objPlaceholders, value)
 
       return {
         number: value.number,

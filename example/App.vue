@@ -12,7 +12,7 @@
         </div> 
 
         <div class="card-wrapper">
-          <card v-model="cardDetail"></card>
+          <card v-model="cardDetail" :placeholders="cardPlaceholders"></card>
         </div>
 
         <input name="number" placeholder="Card number" type="tel" v-model="cardDetail.number" v-card-focus>
@@ -35,6 +35,13 @@ let defaultProps = {
   cvc: '123'
 }
 
+const cardPlaceholders = {
+  number: '•••• •••• •••• ••••',
+  name: 'Nombre completo',
+  expiry: '••/••',
+  cvc: '•••'
+}
+
 export default {
   name: 'Card',
   components: {
@@ -42,7 +49,8 @@ export default {
   },
   data () {
     return {
-      cardDetail: defaultProps
+      cardDetail: defaultProps,
+      cardPlaceholders: cardPlaceholders
     }
   }
 }
