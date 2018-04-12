@@ -12,14 +12,16 @@
         </div> 
 
         <div class="card-wrapper">
-          <card v-model="cardDetail" :placeholders="cardPlaceholders"></card>
+          <card v-model="cardDetail" :placeholders="cardPlaceholders" @validate="cardValidate($event)"></card>
         </div>
 
         <input name="number" placeholder="Card number" type="tel" v-model="cardDetail.number" v-card-focus>
         <input name="name" placeholder="Full name" type="text" v-model="cardDetail.name" v-card-focus>
         <input name="expiry" placeholder="MM/YY" type="tel" v-model="cardDetail.expiry" v-card-focus>
         <input name="cvc" placeholder="CVC" type="number" v-model="cardDetail.cvc" v-card-focus>
-
+        <h5>Data Validate</h5>
+        <pre>{{ validationsCard }}</pre>
+      </header>
     </div>
     </div>
   </div>
@@ -50,7 +52,18 @@ export default {
   data () {
     return {
       cardDetail: defaultProps,
-      cardPlaceholders: cardPlaceholders
+      cardPlaceholders: cardPlaceholders,
+      validationsCard: {
+        number: false,
+        name: false,
+        expiry: false,
+        cvc: false
+      }
+    }
+  },
+  methods: {
+    cardValidate (obj) {
+      this.validationsCard = obj
     }
   }
 }

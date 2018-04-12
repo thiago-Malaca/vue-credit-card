@@ -127,6 +127,14 @@ export default {
     }
   },
   computed: {
+    validations: function () {
+      return {
+        cvc: this.classDisplay.cvc['jp-card-valid'],
+        number: this.classDisplay.number['jp-card-valid'],
+        name: this.classDisplay.name['jp-card-valid'],
+        expiry: this.classDisplay.expiry['jp-card-valid']
+      }
+    },
     classCard: function () {
       let obj = {
         'jp-card-safari': this.isSafari,
@@ -203,6 +211,14 @@ export default {
     }
   },
   mounted () {
+  },
+  watch: {
+    validations: {
+      handler: function (curr) {
+        this.$emit('validate', curr)
+      },
+      deep: true
+    }
   }
 }
 function __guard__ (value, transform) {
