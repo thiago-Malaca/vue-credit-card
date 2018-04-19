@@ -218,6 +218,9 @@ export default {
         this.$emit('validate', curr)
       },
       deep: true
+    },
+    cardType (curr) {
+      this.$emit('type', curr)
     }
   }
 }
