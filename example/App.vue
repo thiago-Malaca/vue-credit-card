@@ -12,14 +12,24 @@
         </div> 
 
         <div class="card-wrapper">
-          <card v-model="cardDetail"></card>
+          <card
+            v-model="cardDetail"
+            :placeholders="cardPlaceholders"
+            @validate="cardValidate($event)"
+            @type="onCardType($event)"
+          >
+          </card>
         </div>
 
         <input name="number" placeholder="Card number" type="tel" v-model="cardDetail.number" v-card-focus>
         <input name="name" placeholder="Full name" type="text" v-model="cardDetail.name" v-card-focus>
         <input name="expiry" placeholder="MM/YY" type="tel" v-model="cardDetail.expiry" v-card-focus>
         <input name="cvc" placeholder="CVC" type="number" v-model="cardDetail.cvc" v-card-focus>
-
+        <h5>Data Validate</h5>
+        <pre>{{ validationsCard }}</pre>
+        <h5>Card type</h5>
+        <pre>{{ cardType }}</pre>
+      </header>
     </div>
     </div>
   </div>
@@ -35,6 +45,13 @@ let defaultProps = {
   cvc: '123'
 }
 
+const cardPlaceholders = {
+  number: '•••• •••• •••• ••••',
+  name: 'Nombre completo',
+  expiry: '••/••',
+  cvc: '•••'
+}
+
 export default {
   name: 'Card',
   components: {
@@ -42,7 +59,23 @@ export default {
   },
   data () {
     return {
-      cardDetail: defaultProps
+      cardDetail: defaultProps,
+      cardType: null,
+      cardPlaceholders: cardPlaceholders,
+      validationsCard: {
+        number: false,
+        name: false,
+        expiry: false,
+        cvc: false
+      }
+    }
+  },
+  methods: {
+    cardValidate (obj) {
+      this.validationsCard = obj
+    },
+    onCardType (type) {
+      this.cardType = type
     }
   }
 }
