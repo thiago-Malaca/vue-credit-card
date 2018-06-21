@@ -19,8 +19,7 @@
         <input name="name" placeholder="Full name" type="text" v-model="cardDetail.name" v-card-focus>
         <input name="expiry" placeholder="MM/YY" type="tel" v-model="cardDetail.expiry" v-card-focus>
         <input name="cvc" placeholder="CVC" type="number" v-model="cardDetail.cvc" v-card-focus>
-
-    </div>
+      </header>
     </div>
   </div>
 </template>
