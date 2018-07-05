@@ -169,7 +169,7 @@ export default {
 
       Object.keys(value).forEach(key => !value[key] && delete value[key])
 
-      value = Object.assign({}, options.placeholders, value)
+      value = Object.assign({}, this.options.placeholders, value)
 
       this.$emit('valid', cardValid)
       return {
