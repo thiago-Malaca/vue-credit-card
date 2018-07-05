@@ -19,7 +19,7 @@
             <div class="jp-card-cvc jp-card-display" :class="classDisplay['cvc']">{{ display.cvc }}</div>
             <div class="jp-card-number jp-card-display" :class="classDisplay['number']">{{ display.number }}</div>
             <div class="jp-card-name jp-card-display" :class="classDisplay['name']">{{ display.name }}</div>
-            <div class="jp-card-expiry jp-card-display" :class="classDisplay['expiry']" :data-before="options.monthYear" :data-after="options.validDate">{{ display.expiry }}</div>
+            <div class="jp-card-expiry jp-card-display" :class="classDisplay['expiry']" :data-before="options.placeholders.monthYear" :data-after="options.placeholders.validDate">{{ display.expiry }}</div>
           </div>
         </div>
         <div class="jp-card-back">
@@ -39,8 +39,6 @@ import Payment from 'payment/lib'
 
 let options = {
   formatting: false,
-  monthYear: 'month/year',
-  validDate: 'valid\nthru',
   cardTypes: [
     'amex',
     'dankort',
@@ -65,7 +63,9 @@ let options = {
     number: '•••• •••• •••• ••••',
     cvc: '•••',
     expiry: '••/••',
-    name: 'Full Name'
+    name: 'Full Name',
+    monthYear: 'month/year',
+    validDate: 'valid\nthru'
   }
 }
 
@@ -114,14 +114,20 @@ const fns = {
 
 export default {
   name: 'Card',
-  props: ['value'],
+  props: ['value', 'placeholder'],
   data () {
     return {
       isSafari: false,
       isIE10: false,
       isIE11: false,
       cardType: null,
-      options,
+      options: {
+        ...options,
+        placeholders: {
+          ...options.placeholders,
+          ...this.placeholder
+        }
+      },
       stateCard,
       classDisplay
     }
