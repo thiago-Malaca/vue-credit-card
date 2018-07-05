@@ -151,9 +151,10 @@ export default {
     display: function () {
       this.value.number = Payment.fns.formatCardNumber(this.value.number)
       this.value.expiry = fns.formatCardExpiry(this.value.expiry)
-
+      let cardValid = {}
       options.inputTypes.forEach(type => {
         let valided = isValid[type](this.value[type], this.cardType)
+        cardValid[type] = valided
         classDisplay[type]['jp-card-valid'] = valided
         classDisplay[type]['jp-card-invalid'] = !valided
       })
@@ -164,6 +165,7 @@ export default {
 
       value = Object.assign({}, options.placeholders, value)
 
+      this.$emit('valid', cardValid)
       return {
         number: value.number,
         name: value.name,
