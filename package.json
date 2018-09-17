@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/thiago-Malaca/vue-credit-card"
+    "url": "https://github.com/danielswiatek/vue-credit-card"
   },
   "author": "Thiago Malaquias <thiago.malaca@gmail.com>",
   "dependencies": {
